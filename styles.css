@@ -1,0 +1,27 @@
+
+
+
+body {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    size:auto;
+}
+
+.horizontal-container{
+    background-color: bisque;
+    border: solid 1px black;
+    padding:30px;
+    margin:5px;
+    display:flex;
+    justify-content: space-between;
+    box-sizing:border-box
+
+}
+
+.button {
+    padding:20px;
+    border: dashed 1px black;
+    box-sizing:border-box
+}
+
