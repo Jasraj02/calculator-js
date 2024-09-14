@@ -54,11 +54,19 @@ function operate(numb1,numb2,symbol) {
 
 
 // pass all user inputs into an array which is displayed on the screen 
-const displayText = [];
+var displayText = [];
 
 function displayUpdate() {
     const calculatorDisplay = document.querySelector("#display")
     calculatorDisplay.textContent = displayText.join("")
+}
+
+function displayClear() {
+    
+}
+
+function displayBackspace() {
+
 }
 
 // event listeners for numbers and some operators can be done based on the text content of the buttons
@@ -78,9 +86,41 @@ numberButtons.forEach(
     }
 )
 
+const operatorButtons = document.querySelectorAll(".operator-button")
+var selectedOperator = false;
+
+operatorButtons.forEach(
+    (button) => {
+        button.addEventListener("click", () => {
+            if (!selectedOperator){
+                displayText.push(button.textContent)
+                displayUpdate()
+                selectedOperator = true
+            }
+        }         
+    )
+    }
+)
+
+const clearButton = document.querySelector("#clear") 
+clearButton.addEventListener("click", () => {
+    displayText = []
+    displayUpdate()
+    selectedOperator = false
+})
+
+const backspaceButton = document.querySelector("#backspace") 
+backspaceButton.addEventListener("click", () => {
+    const removed = displayText.pop()
+    const operatorArray = ["+","-","x","÷","^"]
+    displayUpdate()
+    if (operatorArray.includes(removed)) {
+        selectedOperator = false
+    }
+})
+
 // create a final parser which reads the data in the displayText array 
 // need to add decimal support
-
 
 
 
