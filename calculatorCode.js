@@ -110,6 +110,7 @@ function isString(input){
     return typeof input === "string"
 }
 
+// function takes the displayText array and converts it to a numeric result
 function finalParser(array) {
     var firstNumberArray = [];
     var secondNumberArray = [];
@@ -138,6 +139,7 @@ function numberToString(number) {
     return number.toString()
 }
 
+// takes an array of numbers and combines them into a single number
 function arrayToNumber(initialArray) {
     const stringArray = initialArray.map(numberToString)
     const finalNumber = stringArray.reduce( (total,current) => {
@@ -145,11 +147,14 @@ function arrayToNumber(initialArray) {
     },"")
     return Number(finalNumber)
 }
+
+// takes a number and splits each digit into an array
 function numberToArray(number) {
     const numberAsString = number.toString()
     return numberAsString.split("").map(stringToNumber)
 }
 
+// convert string to numbers, with exception handling for decimal points
 function stringToNumber(string) {
     if (string === ".") {
         return "."
