@@ -42,7 +42,7 @@ function operate(numb1,numb2,symbol) {
     else if (symbol === "x") {
         return multiply(numb1,numb2)
     }
-    else if (symbol === "/") {
+    else if (symbol === "÷") {
         return divide(numb1,numb2)
     }
     else if (symbol === "^") {
@@ -61,21 +61,8 @@ function displayUpdate() {
     calculatorDisplay.textContent = displayText.join("")
 }
 
-function displayClear() {
-    
-}
-
-function displayBackspace() {
-
-}
-
-// event listeners for numbers and some operators can be done based on the text content of the buttons
-
-// take number button content 
-// convert to integer/number data type 
-// push this into the previous number variable 
+// interactivity for the number buttons
 const numberButtons = document.querySelectorAll(".number-button")
-
 numberButtons.forEach(
     (button) => {
         button.addEventListener("click", () => {
@@ -86,7 +73,10 @@ numberButtons.forEach(
     }
 )
 
+// interactivity for operator buttons
 const operatorButtons = document.querySelectorAll(".operator-button")
+
+// toggle following to true when an operator has been inputted
 var selectedOperator = false;
 
 operatorButtons.forEach(
@@ -102,6 +92,7 @@ operatorButtons.forEach(
     }
 )
 
+// interactivity to make clear button clear the display
 const clearButton = document.querySelector("#clear") 
 clearButton.addEventListener("click", () => {
     displayText = []
@@ -109,6 +100,7 @@ clearButton.addEventListener("click", () => {
     selectedOperator = false
 })
 
+// interactivity to make backspace button remove the single last character 
 const backspaceButton = document.querySelector("#backspace") 
 backspaceButton.addEventListener("click", () => {
     const removed = displayText.pop()
@@ -119,8 +111,60 @@ backspaceButton.addEventListener("click", () => {
     }
 })
 
+
 // create a final parser which reads the data in the displayText array 
 // need to add decimal support
 
+function isString(input){
+    return typeof input === "string"
+}
+
+function finalParser(array) {
+    var firstNumberArray = [];
+    var secondNumberArray = [];
+
+    const operatorPresent = array.filter(isString)
+    const operatorPosition = array.indexOf(operatorPresent[0])
+
+    var i=0;
+    while (i < operatorPosition) {
+        firstNumberArray.push(array[i])
+        i++
+    }
+    i++
+    while (i < array.length){
+        secondNumberArray.push(array[i])
+        i++
+    }
+
+    const firstNumber = arrayToNumber(firstNumberArray)
+    const secondNumber = arrayToNumber(secondNumberArray)
+
+    return operate(firstNumber,secondNumber,operatorPresent[0])
+}
+
+function numberToString(number) {
+    return number.toString()
+}
+
+function arrayToNumber(initialArray) {
+    const stringArray = initialArray.map(numberToString)
+    const finalNumber = stringArray.reduce( (total,current) => {
+        return total+current
+    },"")
+    return Number(finalNumber)
+}
+function numberToArray(number) {
+    const numberAsString = number.toString()
+    return numberAsString.split("").map(Number)
+}
 
 
+// interactivity for equals button 
+const equalsButton = document.querySelector("#equals") 
+equalsButton.addEventListener("click", () => {
+    const answer = finalParser(displayText)
+    displayText = numberToArray(answer)
+    displayUpdate()
+    selectedOperator = false
+})
