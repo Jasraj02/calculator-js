@@ -11,11 +11,9 @@ function numberToString(number) {
 
 function arrayToNumber(initialArray) {
     const stringArray = initialArray.map(numberToString)
-    console.log(stringArray)
     const finalNumber = stringArray.reduce( (total,current) => {
         return total+current
     },"")
-    console.log(finalNumber)
     return Number(finalNumber)
 }
 

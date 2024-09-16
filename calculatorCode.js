@@ -1,14 +1,8 @@
 
-// functions needed to add, subtract, divide and multiple 
-
-// Next steps
-// add event listeners to all the buttons 
-
 // could add pictures to the buttons to make them look nicer 
 
-
-
-// all operation functions 
+// number of decimal places to round to
+var dp = 3
 
 function add(a,b) {
     return a+b
@@ -137,7 +131,7 @@ function finalParser(array) {
     const firstNumber = arrayToNumber(firstNumberArray)
     const secondNumber = arrayToNumber(secondNumberArray)
 
-    return operate(firstNumber,secondNumber,operatorPresent[0])
+    return Number(operate(firstNumber,secondNumber,operatorPresent[0]).toFixed(dp))
 }
 
 function numberToString(number) {
@@ -174,6 +168,7 @@ equalsButton.addEventListener("click", () => {
     selectedOperator = false
 })
 
-// fix the fact that decimal answers are unsupported
+
 // add decimal support 
 // update styling 
+// add an additional button that can change the number of decimal places 
