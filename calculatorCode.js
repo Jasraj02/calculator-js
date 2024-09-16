@@ -112,9 +112,6 @@ backspaceButton.addEventListener("click", () => {
 })
 
 
-// create a final parser which reads the data in the displayText array 
-// need to add decimal support
-
 function isString(input){
     return typeof input === "string"
 }
@@ -156,9 +153,17 @@ function arrayToNumber(initialArray) {
 }
 function numberToArray(number) {
     const numberAsString = number.toString()
-    return numberAsString.split("").map(Number)
+    return numberAsString.split("").map(stringToNumber)
 }
 
+function stringToNumber(string) {
+    if (string === ".") {
+        return "."
+    }
+    else {
+        return Number(string)
+    }
+}
 
 // interactivity for equals button 
 const equalsButton = document.querySelector("#equals") 
@@ -168,3 +173,7 @@ equalsButton.addEventListener("click", () => {
     displayUpdate()
     selectedOperator = false
 })
+
+// fix the fact that decimal answers are unsupported
+// add decimal support 
+// update styling 
