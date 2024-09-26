@@ -174,6 +174,15 @@ equalsButton.addEventListener("click", () => {
 })
 
 
+// interactivity for the decimal places dropdown menu
+const decimalDropdown = document.querySelector("#decimal-places")
+
+decimalDropdown.addEventListener("mouseleave", () => {
+    var decimalPlace = decimalDropdown.value
+    console.log(decimalPlace)
+    dp = decimalPlace
+})
+
+
 // add decimal support 
 // update styling 
-// add an additional button that can change the number of decimal places 

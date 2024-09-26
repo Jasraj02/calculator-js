@@ -8,37 +8,48 @@
     <link href="./styles.css" rel="stylesheet">
 </head>
 <body>
-    <div class="horizontal-container">
-        <div id="display"></div>
+    <div id="main-div">
+        <div class="horizontal-container">
+            <div id="display"></div>
+        </div>
+        <div class="horizontal-container">
+            <div class="number-button button" id="seven">7</div>
+            <div class="number-button button" id="eight">8</div>
+            <div class="number-button button" id="nine">9</div>
+            <div class="operator-button button" id="divide">÷</div>
+        </div>
+        <div class="horizontal-container">
+            <div class="number-button button" id="four">4</div>
+            <div class="number-button button" id="five">5</div>
+            <div class="number-button button" id="six">6</div>
+            <div class="operator-button button" id="multiply">x</div>
+        </div>
+        <div class="horizontal-container">
+            <div class="number-button button" id="one">1</div>
+            <div class="number-button button" id="two">2</div>
+            <div class="number-button button" id="three">3</div>
+            <div class="operator-button button" id="minus">-</div>
+        </div>
+        <div class="horizontal-container">
+            <div class="number-button button" id="zero">0</div>
+            <div class="button" id="decimal">.</div>
+            <div class="operator-button button" id="exponent">^</div>
+            <div class="operator-button button" id="add">+</div>
+        </div>
+        <div class="horizontal-container">
+            <div class="button" id="clear">Clear</div>
+            <div class="button" id="backspace">Backspace</div>
+            <div class="button" id="equals">=</div>
+        </div>
     </div>
-    <div class="horizontal-container">
-        <div class="number-button button" id="seven">7</div>
-        <div class="number-button button" id="eight">8</div>
-        <div class="number-button button" id="nine">9</div>
-        <div class="operator-button button" id="divide">÷</div>
-    </div>
-    <div class="horizontal-container">
-        <div class="number-button button" id="four">4</div>
-        <div class="number-button button" id="five">5</div>
-        <div class="number-button button" id="six">6</div>
-        <div class="operator-button button" id="multiply">x</div>
-    </div>
-    <div class="horizontal-container">
-        <div class="number-button button" id="one">1</div>
-        <div class="number-button button" id="two">2</div>
-        <div class="number-button button" id="three">3</div>
-        <div class="operator-button button" id="minus">-</div>
-    </div>
-    <div class="horizontal-container">
-        <div class="number-button button" id="zero">0</div>
-        <div class="button" id="decimal">.</div>
-        <div class="operator-button button" id="exponent">^</div>
-        <div class="operator-button button" id="add">+</div>
-    </div>
-    <div class="horizontal-container">
-        <div class="button" id="clear">Clear</div>
-        <div class="button" id="backspace">Backspace</div>
-        <div class="button" id="equals">=</div>
-    </div>
+    <label for="decimal-places">Number of Decimal Places:</label>
+    <select name="decimal-places" id="decimal-places">
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+        <option value=6>6</option>
+    </select>
 </body>
 </html>
