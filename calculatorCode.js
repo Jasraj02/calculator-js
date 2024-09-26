@@ -107,6 +107,10 @@ backspaceButton.addEventListener("click", () => {
 
 
 function isString(input){
+    // edge case for when the string is a decimal which should be parsed as a number
+    if (input === ".") {
+        return false
+    }
     return typeof input === "string"
 }
 
@@ -129,10 +133,20 @@ function finalParser(array) {
         i++
     }
 
-    const firstNumber = arrayToNumber(firstNumberArray)
-    const secondNumber = arrayToNumber(secondNumberArray)
+    if (decimalCheck(firstNumberArray) > 1 || decimalCheck(secondNumberArray) > 1 ) {
+        alert("Invalid Decimal Input")
+        displayText = []
+        displayUpdate()
+        selectedOperator = false
+        return 0
+    }
+    else {
+        const firstNumber = arrayToNumber(firstNumberArray)
+        const secondNumber = arrayToNumber(secondNumberArray)
+        return Number(operate(firstNumber,secondNumber,operatorPresent[0]).toFixed(dp))
+    }
 
-    return Number(operate(firstNumber,secondNumber,operatorPresent[0]).toFixed(dp))
+    
 }
 
 function numberToString(number) {
@@ -141,11 +155,16 @@ function numberToString(number) {
 
 // takes an array of numbers and combines them into a single number
 function arrayToNumber(initialArray) {
-    const stringArray = initialArray.map(numberToString)
-    const finalNumber = stringArray.reduce( (total,current) => {
-        return total+current
-    },"")
-    return Number(finalNumber)
+
+        const stringArray = initialArray.map(numberToString)
+        const finalNumber = stringArray.reduce( (total,current) => {return total+current},"")
+
+        return Number(finalNumber)
+    
+}
+
+function decimalCheck (array) {
+    return array.filter( arrayItem => arrayItem == ".").length 
 }
 
 // takes a number and splits each digit into an array
@@ -179,10 +198,17 @@ const decimalDropdown = document.querySelector("#decimal-places")
 
 decimalDropdown.addEventListener("mouseleave", () => {
     var decimalPlace = decimalDropdown.value
-    console.log(decimalPlace)
     dp = decimalPlace
 })
 
 
-// add decimal support 
+// make decimal button interactive 
+const decimalButton = document.querySelector("#decimal")
+
+decimalButton.addEventListener("click", () => {
+        displayText.push(".")
+        displayUpdate()
+})
+
+
 // update styling 
