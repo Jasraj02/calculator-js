@@ -17,7 +17,13 @@ function multiply(a,b) {
 }
 
 function divide(a,b) {
-    return a/b
+    if (b === 0) {
+        alert("Cannot divide by zero")
+        return 0
+    }
+    else {
+        return a/b}
+    
 }
 
 function exponential(a,b) {
