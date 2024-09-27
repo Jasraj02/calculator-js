@@ -44,9 +44,6 @@ function operate(numb1,numb2,symbol) {
     }
     }
 
-
-
-
 // pass all user inputs into an array which is displayed on the screen 
 var displayText = [];
 
@@ -204,11 +201,11 @@ decimalDropdown.addEventListener("mouseleave", () => {
 
 // make decimal button interactive 
 const decimalButton = document.querySelector("#decimal")
-
 decimalButton.addEventListener("click", () => {
         displayText.push(".")
         displayUpdate()
 })
 
 
+// TO DO:
 // update styling 
